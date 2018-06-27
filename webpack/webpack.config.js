@@ -1,5 +1,6 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 console.log(path.resolve(__dirname, '../src/index.js'))
 module.exports = {
     entry: path.resolve(__dirname, '../src/index.js'),
@@ -10,6 +11,13 @@ module.exports = {
     mode: "development",
     resolve: {
         extensions: ['*', '.js', '.jsx'],
+    },
+    devServer: {
+        contentBase: '../dist',
+        port: '8080',
+        host: '127.0.0.1',
+        hot: true,
+        inline: true
     },
     module: {
         rules: [{
@@ -22,6 +30,7 @@ module.exports = {
         }]
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new htmlWebpackPlugin({
             title: 'test',
             filename: 'index.html',
