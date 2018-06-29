@@ -1,8 +1,8 @@
-const path = require('path');
-const htmlWebpackPlugin = require('html-webpack-plugin')
-const webpack = require('webpack')
-console.log(path.resolve(__dirname, '../src/index.js'))
-module.exports = {
+import path from 'path';
+import webpack from 'webpack';
+import htmlWebpackPlugin from 'html-webpack-plugin';
+
+export default {
     entry: path.resolve(__dirname, '../src/index.js'),
     output: {
         path: path.resolve(__dirname, '../dist'),
@@ -20,14 +20,31 @@ module.exports = {
         inline: true
     },
     module: {
-        rules: [{
-            test: /\.(js|jsx)$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader',
-            query: {
-                presets: ['es2015', 'react']
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        query: {
+                            presets: ['es2015', 'react']
+                        }
+                    }
+                ],
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                ]
             }
-        }]
+        ]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
