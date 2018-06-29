@@ -2,16 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 import LeftMenu from './components/LeftMenu';
-import styleCss from '../public/style/style.css';
+import styleCss from './assert/css/material-page-style.css';
+import { BrowserRouter } from 'react-router-dom'
+import LeftMenuList from '../routes/dashboardMenu';
 
 function App() {
-  const menuList = [
-    {label: 'Test1', click: () => {console.log(1)}},
-    {label: 'Test2', click: () => {console.log(2)}}
-  ]
   return (
-    <LeftMenu wpUserType={1} wpMenuList={menuList}></LeftMenu>
+    <LeftMenu wpUserType={1} wpMenuList={LeftMenuList} className="wp-main-left-menu"></LeftMenu>
   );
 }
 
-ReactDOM.render(<App />, document.querySelector('#left-menu'));
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+  , document.querySelector('.body'));

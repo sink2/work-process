@@ -3,7 +3,7 @@ import webpack from 'webpack';
 import htmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
-    entry: path.resolve(__dirname, '../src/index.js'),
+    entry: path.resolve(__dirname, '../src/index.jsx'),
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'bundle.js',
