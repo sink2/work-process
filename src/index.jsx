@@ -1,19 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from '@material-ui/core/Button';
 import LeftMenu from './components/LeftMenu';
-import styleCss from './assert/css/material-page-style.css';
-import { BrowserRouter } from 'react-router-dom'
-import LeftMenuList from '../routes/dashboardMenu';
+import TopBar from './components/TopBar';
+import MainPane from './components/MainPane';
+import {createStore} from 'redux';
 
 function App() {
   return (
-    <LeftMenu wpUserType={1} wpMenuList={LeftMenuList} className="wp-main-left-menu"></LeftMenu>
+    <div>
+      <LeftMenu className="wp-left-menu" />
+      <TopBar className="wp-top-bar" />
+      <MainPane className="wp-main-pane" />
+    </div>
   );
 }
 
 ReactDOM.render(
-  <BrowserRouter>
+  <div>
     <App />
-  </BrowserRouter>
-  , document.querySelector('.body'));
+  </div>
+  , document.querySelector('#app'));

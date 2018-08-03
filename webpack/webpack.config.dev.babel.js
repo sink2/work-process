@@ -51,7 +51,7 @@ export default {
         new htmlWebpackPlugin({
             title: 'test',
             filename: 'index.html',
-            template: path.resolve(__dirname, '../public/index.html'),
+            template: path.resolve(__dirname, '../src/index.html'),
             // inject: 'body',
             // favicon: '',
             // minify: {},
