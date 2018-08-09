@@ -1,6 +1,8 @@
 import path from 'path';
 import webpack from 'webpack';
 import htmlWebpackPlugin from 'html-webpack-plugin';
+import extractTextPlugin from 'extract-text-webpack-plugin';
+
 
 export default {
     entry: path.resolve(__dirname, '../src/index.jsx'),
@@ -34,14 +36,11 @@ export default {
                 ],
             },
             {
-                test: /\.css$/,
+                test: /\.less$/,
                 use: [
-                    {
-                        loader: 'style-loader'
-                    },
-                    {
-                        loader: 'css-loader'
-                    },
+                    'style-loader',
+                    { loader: 'css-loader', options: { importLoaders: 1 } },
+                    'less-loader'
                 ]
             }
         ]

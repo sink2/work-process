@@ -10,7 +10,4 @@ function getCurrentTheme() {
 
 }
 
-export default {
-    setCurrentTheme: setCurrentTheme,
-    getCurrentTheme: getCurrentTheme
-}
+export { setCurrentTheme, getCurrentTheme }
